@@ -11,16 +11,15 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class LoginPresenterImpl implements LoginPresenter {
-    EventBus eventBus;
-    LoginView loginView;
-    LoginInteractor loginInteractor;
+    private EventBus eventBus;
+    private LoginView loginView;
+    private LoginInteractor loginInteractor;
 
     public LoginPresenterImpl(LoginView loginView) {
         this.loginView = loginView;
         this.eventBus = EventBus.getDefault();
         this.loginInteractor = new LoginInteractorImpl();
     }
-
 
 
     @Override
@@ -37,7 +36,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void checkForAuthentificatedUser() {
-        if (loginView != null){
+        if (loginView != null) {
             loginView.disableInputs();
             loginView.showProgress();
         }
@@ -47,7 +46,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     @Subscribe
     public void onEventMainThread(LoginEvent event) {
-        switch (event.getEventType()){
+        switch (event.getEventType()) {
             case LoginEvent.onSignInError:
                 onSignInError(event.getErrorMessage());
                 break;
@@ -70,7 +69,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void validateLogin(String email, String password) {
-        if (loginView != null){
+        if (loginView != null) {
             loginView.disableInputs();
             loginView.showProgress();
         }
@@ -89,45 +88,47 @@ public class LoginPresenterImpl implements LoginPresenter {
             return;
         }
 
-        if (loginView != null){
+        if (loginView != null) {
             loginView.disableInputs();
             loginView.showProgress();
         }
         loginInteractor.doSignUp(email, password);
     }
 
-    private void onSignInSuccess(){
-        if (loginView != null){
+    private void onSignInSuccess() {
+        if (loginView != null) {
+            loginView.hideProgress();
+            loginView.enableInputs();
             loginView.navigateToMainScreen();
         }
     }
 
-    private void onSignUpSuccess(){
-        if (loginView != null){
+    private void onSignUpSuccess() {
+        if (loginView != null) {
             loginView.hideProgress();
             loginView.enableInputs();
             loginView.newUserSuccess();
         }
     }
 
-    private void onSignInError(String error){
-        if (loginView != null){
+    private void onSignInError(String error) {
+        if (loginView != null) {
             loginView.hideProgress();
             loginView.enableInputs();
             loginView.loginError(error);
         }
     }
 
-    private void onSignUpError(String error){
-        if (loginView != null){
+    private void onSignUpError(String error) {
+        if (loginView != null) {
             loginView.hideProgress();
             loginView.enableInputs();
             loginView.newUserError(error);
         }
     }
 
-    private void onFailedToRecoverSession(){
-        if (loginView != null){
+    private void onFailedToRecoverSession() {
+        if (loginView != null) {
             loginView.hideProgress();
             loginView.enableInputs();
         }

@@ -1,4 +1,4 @@
-<resources>
+<resources tools:ignore="ExtraTranslation" xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Momo Chat</string>
 
     <string name="login.title">Войдите в Momo Chat</string>
@@ -10,4 +10,5 @@
     <string name="login.error.message.invalidpassword">Введен пустой или неверный пароль</string>
     <string name="login.error.message.invalidemail">Введен пустой или неверный email</string>
     <string name="login.notice.message.useradded">Вы успешно зарегистрировались</string>
+    <string name="contactlist.menu.action.signoff">Выйти</string>
 </resources>

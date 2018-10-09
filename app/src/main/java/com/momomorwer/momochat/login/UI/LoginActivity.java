@@ -104,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void navigateToMainScreen() {
         startActivity(new Intent(this, ContactListActivity.class));
+        finish();
     }
 
     @Override
