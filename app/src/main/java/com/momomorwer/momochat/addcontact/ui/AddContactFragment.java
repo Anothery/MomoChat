@@ -9,8 +9,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.momomorwer.momochat.R;
 import com.momomorwer.momochat.addcontact.AddContactPresenter;
@@ -28,7 +30,7 @@ public class AddContactFragment extends DialogFragment implements AddContactView
     private AddContactPresenter addContactPresenter;
 
     public AddContactFragment() {
-        this.addContactPresenter = new AddContactPresenterImpl();
+        this.addContactPresenter = new AddContactPresenterImpl(this);
     }
 
     @NonNull
@@ -50,7 +52,7 @@ public class AddContactFragment extends DialogFragment implements AddContactView
                 });
 
         LayoutInflater i = getActivity().getLayoutInflater();
-        View view = i.inflate(R.layout.fragment_add_contact,null);
+        View view = i.inflate(R.layout.fragment_add_contact, null);
         ButterKnife.bind(this, view);
         builder.setView(view);
         AlertDialog dialog = builder.create();
@@ -61,38 +63,66 @@ public class AddContactFragment extends DialogFragment implements AddContactView
 
 
     @Override
-    public void onShow(DialogInterface dialog) {
+    public void onShow(DialogInterface dialogInterface) {
+        final AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null) {
 
+            Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
+            Button negativeButton = dialog.getButton(Dialog.BUTTON_NEGATIVE);
+
+            positiveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addContactPresenter.addContact(inputEmail.getText().toString());
+                }
+            });
+
+            negativeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dismiss();
+                }
+            });
+        }
+        addContactPresenter.onShow();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        addContactPresenter.onDestroy();
     }
 
     @Override
     public void showInput() {
-
+        inputEmail.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideInput() {
-
+        inputEmail.setVisibility(View.GONE);
     }
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void contactAdded() {
-
+        Toast.makeText(getActivity(), R.string.addcontact_message_contactadded,Toast.LENGTH_SHORT).show();
+        dismiss();
     }
 
     @Override
     public void contactNotAdded() {
-
+        inputEmail.setText("");
+        inputEmail.setError(getString(R.string.addcontact_error_message));
     }
 
 }

@@ -35,7 +35,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
-    public void checkForAuthentificatedUser() {
+    public void checkForAuthenticatedUser() {
         if (loginView != null) {
             loginView.disableInputs();
             loginView.showProgress();

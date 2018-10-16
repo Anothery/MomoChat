@@ -48,8 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         loginPresenter = new LoginPresenterImpl(this);
         loginPresenter.onCreate();
-        //loginPresenter.checkForAuthentificatedUser();
-
+        loginPresenter.checkForAuthenticatedUser();
     }
 
     @Override
@@ -109,7 +108,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void loginError(String error) {
-
+        inputPassword.setText("");
+        String msgError = String.format(getString(R.string.login_error_message_signin), error);
+        inputPassword.setError(msgError);
     }
 
     @Override
@@ -119,7 +120,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void newUserError(String error) {
-
+        inputPassword.setText("");
+        String msgError = String.format(getString(R.string.login_error_message_signup), error);
+        inputPassword.setError(msgError);
     }
 
     @Override

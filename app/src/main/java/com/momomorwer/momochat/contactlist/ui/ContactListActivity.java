@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.momomorwer.momochat.MomoChatApplication;
 import com.momomorwer.momochat.R;
+import com.momomorwer.momochat.addcontact.ui.AddContactFragment;
 import com.momomorwer.momochat.contactlist.ContactListPresenter;
 import com.momomorwer.momochat.contactlist.ContactListPresenterImpl;
 import com.momomorwer.momochat.contactlist.adapters.ContactListAdapter;
@@ -95,7 +96,8 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @OnClick(R.id.fab)
     public void addContact(){
-        // TODO ADD CONTACT FRAGMENT
+        AddContactFragment frag = new AddContactFragment();
+        frag.show(getSupportFragmentManager(), "");
     }
     private void setupAdapter() {
         MomoChatApplication app = (MomoChatApplication) getApplication();

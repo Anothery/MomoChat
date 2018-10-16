@@ -12,4 +12,11 @@
     <string name="login.error.message.invalidemail">Empty or invalid email</string>
     <string name="login.notice.message.useradded">You have successfully signed up and logged in</string>
     <string name="contactlist.menu.action.signoff">Sign off</string>
+    <string name="addcontact.message.title">Add contact</string>
+    <string name="addcontact.message.add">Add</string>
+    <string name="addcontact.message.cancel">Cancel</string>
+    <string name="addcontact.message.contactadded">Contact successfully added</string>
+    <string name="addcontact.error.message">Error when adding contact</string>
+    <string name="login.error.message.signin">Error when signing in</string>
+    <string name="login.error.message.signup">Error when signing up</string>
 </resources>

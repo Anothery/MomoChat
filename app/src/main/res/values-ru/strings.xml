@@ -13,4 +13,8 @@
     <string name="addcontact.message.title">Добавить контакт</string>
     <string name="addcontact.message.add">Добавить</string>
     <string name="addcontact.message.cancel">Отмена</string>
+    <string name="addcontact.message.contactadded">Контакт успешно добавлен</string>
+    <string name="addcontact.error.message">Не удалось добавить контакт</string>
+    <string name="login.error.message.signin">Ошибка при авторизации</string>
+    <string name="login.error.message.signup">Ошибка при регистрации</string>
 </resources>

@@ -7,9 +7,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.momomorwer.momochat.contactlist.entities.User;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class FirebaseHelper {
     private DatabaseReference dataReference;
@@ -43,7 +45,6 @@ public class FirebaseHelper {
         return email;
     }
 
-
     public DatabaseReference getUserReference(String email){
         DatabaseReference userReference = null;
         if (email != null) {
@@ -52,7 +53,6 @@ public class FirebaseHelper {
         }
         return userReference;
     }
-
 
     public DatabaseReference getMyUserReference() {
         return getUserReference(getAuthUserEmail());
@@ -118,6 +118,6 @@ public class FirebaseHelper {
     }
 
     public void signOff(){
-       // notifyContactsOfConnectionChange(User.OFFLINE, true);
+        notifyContactsOfConnectionChange(User.OFFLINE, true);
     }
 }
