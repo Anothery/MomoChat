@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     View progressView;
     @BindView(R.id.layoutMainContainer)
     ConstraintLayout container;
+    @BindView(R.id.tilEmail)
+    TextInputLayout tilEmail;
+    @BindView(R.id.tilPassword)
+    TextInputLayout tilPassword;
 
     private LoginPresenter loginPresenter;
 
@@ -72,6 +77,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         btnSignUp.setEnabled(enabled);
         inputEmail.setEnabled(enabled);
         inputPassword.setEnabled(enabled);
+        tilEmail.setErrorEnabled(enabled);
+        tilPassword.setErrorEnabled(enabled);
     }
 
     @Override
@@ -103,14 +110,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void navigateToMainScreen() {
         startActivity(new Intent(this, ContactListActivity.class));
-        finish();
     }
 
     @Override
     public void loginError(String error) {
         inputPassword.setText("");
         String msgError = String.format(getString(R.string.login_error_message_signin), error);
-        inputPassword.setError(msgError);
+        tilPassword.setErrorEnabled(true);
+        tilPassword.setError(msgError);
+        //inputPassword.setError(msgError);
     }
 
     @Override
@@ -122,18 +130,22 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void newUserError(String error) {
         inputPassword.setText("");
         String msgError = String.format(getString(R.string.login_error_message_signup), error);
-        inputPassword.setError(msgError);
+        tilPassword.setError(msgError);
+        //inputPassword.setError(msgError);
     }
 
     @Override
     public void setEmailError(int messageResId) {
-        inputEmail.setError(getString(messageResId));
-        inputEmail.requestFocus();
+
+        //inputEmail.setError(getString(messageResId));
+        //inputEmail.requestFocus();
+        tilEmail.setError(getString(messageResId));
     }
 
     @Override
     public void setPasswordError(int messageResId) {
-        inputPassword.setError(getString(messageResId));
-        inputPassword.requestFocus();
+        //inputPassword.setError(getString(messageResId));
+        //inputPassword.requestFocus();s
+        tilPassword.setError(getString(messageResId));
     }
 }
