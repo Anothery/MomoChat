@@ -19,9 +19,10 @@
             app:title="@string/contactlist.title"
             android:layout_width="match_parent"
             app:titleTextColor="@color/colorWhite"
+            app:subtitleTextColor="@color/colorWhite"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme" />
+            android:theme="@style/AppTheme.ToolbarColoredMenu" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -38,6 +39,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"

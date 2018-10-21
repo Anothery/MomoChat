@@ -45,6 +45,10 @@ public class FirebaseHelper {
         return email;
     }
 
+    public DatabaseReference getUsersReference(){
+            return dataReference.getRoot().child(USERS_PATH);
+    }
+
     public DatabaseReference getUserReference(String email){
         DatabaseReference userReference = null;
         if (email != null) {

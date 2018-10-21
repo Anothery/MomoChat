@@ -10,6 +10,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.momomorwer.momochat.login.entities.LoginUser;
 import com.momomorwer.momochat.utils.FirebaseHelper;
 import com.momomorwer.momochat.contactlist.entities.User;
 import com.momomorwer.momochat.login.events.LoginEvent;
@@ -34,7 +35,10 @@ public class LoginRepositoryImpl implements LoginRepository {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-
+                        helper.getUsersReference()
+                                .push()
+                                .child(email.replace('.', '_'))
+                                .setValue(new LoginUser(email, "test"));
                         postEvent(LoginEvent.onSignUpSuccess);
                         signIn(email, password);
                     }
