@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.momomorwer.momochat.MomoChatApplication;
 import com.momomorwer.momochat.R;
 import com.momomorwer.momochat.addcontact.ui.AddContactFragment;
+import com.momomorwer.momochat.chat.ui.ChatActivity;
 import com.momomorwer.momochat.contactlist.ContactListPresenter;
 import com.momomorwer.momochat.contactlist.ContactListPresenterImpl;
 import com.momomorwer.momochat.contactlist.adapters.ContactListAdapter;
@@ -128,7 +129,10 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @Override
     public void onItemClick(User user) {
-       // TODO CHAT ACTIVITY
+       Intent intent = new Intent(this, ChatActivity.class);
+       intent.putExtra(ChatActivity.EMAIL_KEY, user.getEmail());
+       intent.putExtra(ChatActivity.ONLINE_KEY, user.isOnline());
+       startActivity(intent);
     }
 
     @Override

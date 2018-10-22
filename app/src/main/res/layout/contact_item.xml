@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     tools:context=".contactlist.ui.ContactListActivity"
-    tools:showIn="@layout/activity_contact_list">
+    tools:showIn="@layout/activity_contact_list"
+    android:id="@+id/relativeLayout2">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imgAvatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginRight="@dimen/fab_margin"/>
+        android:layout_marginRight="@dimen/fab_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,9 +28,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/txtUser"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imgAvatar"
-        android:layout_toEndOf="@+id/imgAvatar" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintLeft_toRightOf="@+id/imgAvatar"
+        android:layout_marginLeft="@dimen/fab_margin"
+        app:layout_constraintStart_toEndOf="@+id/imgAvatar" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,8 +39,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/txtStatus"
-        android:layout_below="@+id/txtUser"
-        android:layout_alignLeft="@+id/txtUser"
-        android:layout_alignStart="@+id/txtUser" />
+        app:layout_constraintStart_toStartOf="@+id/txtUser"
+        app:layout_constraintTop_toBottomOf="@+id/txtUser"
+        app:layout_constraintLeft_toLeftOf="@+id/txtUser" />
 
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

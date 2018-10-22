@@ -46,10 +46,12 @@ public class ContactListRepositoryImpl implements ContactListRepository {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String previousChildKey) {
                     String email = dataSnapshot.getKey();
-                    email = email.replace("_",".");
-                    boolean online = ((Boolean)dataSnapshot.getValue()).booleanValue();
-                    User user = new User(email, online, null);
-                    postEvent(ContactListEvent.onContactAdded, user);
+                    if(!email.equals(helper.getAuthUserEmail())) {
+                        email = email.replace("_", ".");
+                        boolean online = ((Boolean) dataSnapshot.getValue()).booleanValue();
+                        User user = new User(email, online, null);
+                        postEvent(ContactListEvent.onContactAdded, user);
+                    }
                 }
 
                 @Override

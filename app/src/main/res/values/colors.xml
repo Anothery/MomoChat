@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#d23a11</color>
+    <!--<color name="colorPrimary">#d23a11</color>
     <color name="colorPrimaryDark">#b2310f</color>
-    <color name="colorAccent">#b2310f</color>
+    <color name="colorAccent">#b2310f</color>-->
     <color name="colorMain">#bd202d</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorHint">#af9e93</color>
-    <!-- BLUE
+     BLUE
      <color name="colorPrimary">#5898ef</color>
     <color name="colorPrimaryDark">#426cd7</color>
-    <color name="colorAccent">#426cd7</color>
-    -->
+    <color name="colorAccent">#224b7a</color>
+
 </resources>
